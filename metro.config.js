@@ -13,6 +13,7 @@ const defaultConfig = getDefaultConfig(__dirname);
 const {assetExts, sourceExts} = defaultConfig.resolver;
 
 const config = {
+  maxWorkers: 2,
   resolver: {
     //nodeModulesPaths: [...localPackagePaths], // update to resolver
     assetExts: assetExts.filter(ext => ext !== 'svg'),

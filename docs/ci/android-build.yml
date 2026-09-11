@@ -1,0 +1,48 @@
+﻿name: MobiMind Android Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install JavaScript Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Build Android Debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleProdDebug --no-daemon -PreactNativeArchitectures=x86_64,arm64-v8a
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobimind-prod-debug-apk
+          path: android/app/build/outputs/apk/prod/debug/*.apk
+          retention-days: 14

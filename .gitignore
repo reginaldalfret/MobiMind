@@ -111,3 +111,30 @@ android/android-build.log
 # screenshot inventories). Live in the dev-team repo and are sometimes
 # synced into the worktree for local reference; never committed here.
 workflows/
+# ============================================================
+# MobiMind — Exclusions for Models, Binaries & Local Caches
+# ============================================================
+models/
+*.gguf
+*.cact
+*.bin
+*.safetensors
+*.apk
+*.aab
+*.keystore
+!debug.keystore
+*.jks
+*.pem
+*.key
+android/.gradle/
+android/app/build/
+**/build/
+.idea/
+.vscode/
+Thumbs.db
+logs/
+tmp/
+temp/
+# Root-level test captures and debug scripts
+/*.png
+build_prod_debug.sh
