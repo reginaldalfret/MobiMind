@@ -133,3 +133,5 @@ This project originated from and builds upon the open-source [PocketPal AI](http
 MobiMind introduces the Dual-Engine Action/Chat architecture, FunctionGemma agent verification pipelines, multi-model Q2_K catalog, and RGB Neon Liquid Glass design system.
 
 See the [LICENSE](LICENSE) file for complete license terms.
+
+2026 - All Rights Reserved
